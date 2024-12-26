@@ -12,9 +12,9 @@ while True:
     number_of_guesses +=1
 
     if user_answer == "h":
-        end_interval = half_interval
+        end_interval = half_interval -1
     elif user_answer == 'l':
-        start_interval = half_interval
+        start_interval = half_interval +1
     else:
         print(f"I guessed correctly! It took me {str(number_of_guesses) } guesses to guess your number.")
         break
