@@ -5,7 +5,7 @@ def check_winner(game_matrix):
 
     diagonal = game_matrix.diagonal()
 
-    anti_diagonal = numpy.array([game_matrix[2,0], game_matrix[1,1], game_matrix[0,2]])
+    anti_diagonal = numpy.flipr(game_matrix).diagonal()
 
     for i in [1,2]: #loop over players indexes
         for j in range(3):
