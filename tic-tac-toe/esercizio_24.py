@@ -39,7 +39,7 @@ def print_game_board(game_matrix: numpy.ndarray[int]):
         else:
             third_row_cells += "| O  "
 
-    return row + "\n" + first_row_cells + "|" +"\n" + row + "\n" + second_row_cells +"|" + "\n" + row + "\n" + third_row_cells + "|" + "\n" + row
+    return f"{row}\n{first_row_cells}|\n{row}\n{second_row_cells}|\n{row}\n{third_row_cells}|\n{row}"
 
 if __name__ == "__main__":
     n = int(input("Benvenuto nel generatore di griglie per giochi. Quante celle deve avere un lato della griglia? "))

@@ -10,16 +10,15 @@ while True: #loop for playing game
     player_symbol = 'X'
     while True: #loop for players' turns
 
-        coordinates = input(f"Player {player_turn}, make your move. Where do you want to place your {player_symbol}? User row,col starting from 0: ")
+        coordinates = input(f"Player {player_turn}, make your move. Where do you want to place your {player_symbol}? User row,col starting from 1: ")
 
         [x_coordinate, y_coordinate] = [int(coordinates.split(",")[0]), int(coordinates.split(",")[1])]
 
-        if game_matrix[x_coordinate, y_coordinate] == 0:
-            game_matrix[x_coordinate, y_coordinate] = player_turn
+        if game_matrix[x_coordinate-1, y_coordinate-1] == 0:
+            game_matrix[x_coordinate-1, y_coordinate-1] = player_turn
+            print(print_game_board(game_matrix)) #print game board with fake graphics
         else:
             print("Cell already occupied. Please choose a different cell")
-
-        print(print_game_board(game_matrix)) #print game board with fake graphics
             
         #check if someone won the game
         winner_player: int = check_game(numpy.array(game_matrix))
@@ -43,7 +42,6 @@ while True: #loop for playing game
     if play_again == 'n':
         break
 
-#TODO: print game board with fake graphics
-#TODO: use row and column indexes starting from 1
+#TODO: improve logic of fake graphics
 #TODO: stampare parità in anticipo quando non è più possibile che qualcuno vinca
 #TODO: idea per progetto: tic-tac-toe con machine learning e intelligenza artificiale, giocare contro il PC
