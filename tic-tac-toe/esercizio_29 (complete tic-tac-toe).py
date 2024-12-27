@@ -1,6 +1,6 @@
 import numpy
 from esercizio_26 import check_game
-from esercizio_24 import print_game_board
+from esercizio_24 import draw_game_board
 
 while True: #loop for playing game
     print("Hi, i'm Python. Welcome to tic-tac-toe game")
@@ -16,27 +16,27 @@ while True: #loop for playing game
 
         if game_matrix[x_coordinate-1, y_coordinate-1] == 0:
             game_matrix[x_coordinate-1, y_coordinate-1] = player_turn
-            print(print_game_board(game_matrix)) #print game board with fake graphics
+
+            print(draw_game_board(game_matrix)) #print game board with fake graphics
+
+            winner_player: int = check_game(numpy.array(game_matrix))#check if someone won the game
+            if winner_player in [1,2]:
+                print(f"Player {winner_player} wins")
+                break
+
+            #check for draw condition
+            elif winner_player == 0:
+                print("It's a draw")
+                break
+
+            if player_turn ==1:
+                player_turn = 2
+                player_symbol = 'O'
+            elif player_turn ==2:
+                player_turn = 1
+                player_symbol = 'X'
         else:
             print("Cell already occupied. Please choose a different cell")
-            
-        #check if someone won the game
-        winner_player: int = check_game(numpy.array(game_matrix))
-        if winner_player in [1,2]:
-            print(f"Player {winner_player} wins")
-            break
-
-        #check for draw condition
-        elif winner_player == 0:
-            print("It's a draw")
-            break
-
-        if player_turn ==1:
-            player_turn = 2
-            player_symbol = 'O'
-        elif player_turn ==2:
-            player_turn = 1
-            player_symbol = 'X'
 
     play_again = input("Do you want to play again? y/n: ")
     if play_again == 'n':

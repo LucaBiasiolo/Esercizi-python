@@ -9,9 +9,8 @@ def generate_void_column(n):
 def generate_full_column(symbol):
     return f"| {symbol} "
 
-def print_game_board(game_matrix: numpy.ndarray[int]):
+def draw_game_board(game_matrix: numpy.ndarray[int]):
 
-    row = " --- " *3
     first_row_cells = ""
     for i in range(3):
         if game_matrix[0,i] == 0:
@@ -39,7 +38,15 @@ def print_game_board(game_matrix: numpy.ndarray[int]):
         else:
             third_row_cells += "| O  "
 
-    return f"{row}\n{first_row_cells}|\n{row}\n{second_row_cells}|\n{row}\n{third_row_cells}|\n{row}"
+    return f"""
+ ---  ---  --- 
+{first_row_cells}|
+ ---  ---  --- 
+{second_row_cells}|
+ ---  ---  --- 
+{third_row_cells}|
+ ---  ---  --- 
+"""
 
 if __name__ == "__main__":
     n = int(input("Benvenuto nel generatore di griglie per giochi. Quante celle deve avere un lato della griglia? "))
