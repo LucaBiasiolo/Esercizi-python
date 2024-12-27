@@ -2,6 +2,7 @@ import numpy
 from esercizio_26 import check_game
 
 while True: #loop for playing game
+    print("Hi, i'm Python. Welcome to tic-tac-toe game")
     game_matrix = [[0,0,0],[0,0,0],[0,0,0]]
 
     player_turn = 1
@@ -21,18 +22,13 @@ while True: #loop for playing game
             print(game_matrix[i]) #print game board with fake graphics
             
         #check if someone won the game
-        found_winner: str = check_game(numpy.array(game_matrix))
-        if found_winner.startswith("Player"):
-            print(found_winner)
+        winner_player: int = check_game(numpy.array(game_matrix))
+        if winner_player in [1,2]:
+            print(f"Player {winner_player} wins")
             break
-        
-        game_still_playable = False
-        for i in range(3):
-            for j in range(3):
-                if game_matrix[i][j] == 0:
-                    game_still_playable = True
 
-        if not game_still_playable:
+        #check for draw condition
+        elif winner_player == 0:
             print("It's a draw")
             break
 
