@@ -1,11 +1,11 @@
 import numpy
 
-def check_winner(game_matrix):
+def check_game(game_matrix: numpy.ndarray[int]):
     transposed_game_matrix = game_matrix.transpose()
 
     diagonal = game_matrix.diagonal()
 
-    anti_diagonal = numpy.flipr(game_matrix).diagonal()
+    anti_diagonal = numpy.fliplr(game_matrix).diagonal()
 
     for i in [1,2]: #loop over players indexes
         for j in range(3):
@@ -26,4 +26,4 @@ if __name__ == '__main__':
     game_matrix = numpy.array([[1, 2, 0],
                                 [2, 1, 0],
                                 [2, 1, 1]])
-    print(check_winner(game_matrix))
+    print(check_game(game_matrix))
