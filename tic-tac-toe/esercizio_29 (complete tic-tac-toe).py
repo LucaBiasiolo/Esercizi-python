@@ -44,7 +44,5 @@ while True: #loop for playing game
         break
 
 #TODO: print game board with fake graphics
-#TODO: refactor check_winner
 #TODO: stampare parità in anticipo quando non è più possibile che qualcuno vinca
-#TODO: move draw logic in check_winner
 #TODO: idea per progetto: tic-tac-toe con machine learning e intelligenza artificiale, giocare contro il PC
