@@ -16,4 +16,3 @@ with open('./Esercizi/birthdate data/birthdate_dictionary.json') as birthdate_di
     months_counter = Counter(months_list)
 
     print(months_counter)
-
