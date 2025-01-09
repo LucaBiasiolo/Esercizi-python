@@ -2,7 +2,7 @@ import joblib
 import random
 import numpy
 from draw_game_board import draw_game_board
-from get_ai_move import get_ai_move
+from get_ai_move import get_ai_random_move
 from check_game import check_game
 from sklearn.neural_network import MLPClassifier
 
@@ -31,7 +31,7 @@ neural_network: MLPClassifier = joblib.load('./Esercizi/tic-tac-toe-ml/tic_tac_t
 while True:
     if machine_number == 1:
         #AI starts first
-        ai_coordinates = get_ai_move(game_matrix, machine_symbol)
+        ai_coordinates = get_ai_random_move(game_matrix, machine_symbol)
         game_matrix[ai_coordinates[0], ai_coordinates[1]] = machine_number
         print(f"AI places {machine_symbol} at {ai_coordinates}")
         print(draw_game_board(game_matrix))
@@ -55,7 +55,7 @@ while True:
             print("Cell already occupied. Please select another cell")
             continue
 
-        ai_coordinates = get_ai_move(game_matrix, machine_symbol)
+        ai_coordinates = get_ai_random_move(game_matrix, machine_symbol)
         print(f"AI places {machine_symbol} at {ai_coordinates[0],ai_coordinates[1]}")
         game_matrix[ai_coordinates[0],ai_coordinates[1]] = machine_number
         print(draw_game_board(game_matrix))
