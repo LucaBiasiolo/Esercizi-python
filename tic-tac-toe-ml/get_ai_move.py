@@ -1,6 +1,7 @@
 import tensorflow as tf
 import random
 import numpy as np
+from tic_tac_toe_class import TicTacToe
 
 def get_ai_random_move(game_matrix, machine_symbol):
     empty_spots = [(i, j) for i in range(3) for j in range(3) if game_matrix[i,j] == 0]
@@ -12,13 +13,20 @@ def get_model():
         tf.keras.layers.Dense(68, activation='relu'),
         tf.keras.layers.Dense(9)])
     
-def train_model(model, epochs=1000):
+def train_model(model, epochs=1000, epsilon=0.9, gamma=0.95, alpha=0.8):
+
+    n_states = 9
 
     #to train the model, use q-learning withh epsilon-greedy strategy
     #1000 epochs, where every epoch is an entire game
+    #the environment is the game board, while the states are the possible moves
+    #epsilon is the probability of exploring a random state, while 1-epsilon the probability of exploiting current known strategies
+    #gamma is the discount factor, which takes into account future rewards
+    #alpha is the learning rate, the rate at which new information acquired by the model overrides old information
 
-    for game in range(epochs):
-        pass
+    for _ in range(epochs):
+        game = TicTacToe()
+        
 
 if __name__ == '__main__':
     model = get_model()
