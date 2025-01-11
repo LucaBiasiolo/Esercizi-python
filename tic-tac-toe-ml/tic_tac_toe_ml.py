@@ -1,10 +1,9 @@
-import joblib
 import random
 import numpy
 from draw_game_board import draw_game_board
 from get_ai_move import get_ai_random_move
 from check_game import check_game
-from sklearn.neural_network import MLPClassifier
+import tensorflow as tf
 
 print("Hello, i'm Python. Welcome to tic-tac-toe game. You will play against the AI")
 
@@ -25,7 +24,7 @@ else:
     machine_symbol = 'X'
 
 game_matrix = numpy.array([[0,0,0],[0,0,0],[0,0,0]])
-neural_network: MLPClassifier = joblib.load('./Esercizi/tic-tac-toe-ml/tic_tac_toe_mlp.pkl')
+neural_network = tf.load('./Esercizi/tic-tac-toe-ml/tic_tac_toe_mlp.keras')
 
 #first turn
 while True:
@@ -62,10 +61,6 @@ while True:
     winner_number = check_game(game_matrix)
     if winner_number in [1,2]:
         print(f"Player {winner_number} wins")
-
-        if winner_number == 2:
-            neural_network = neural_network.fit(game_matrix)
-            joblib.dump(neural_network, './Esercizi/tic-tac-toe-ml/tic_tac_toe_mlp.pkl')
         break
 
 
